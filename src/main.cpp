@@ -1,0 +1,44 @@
+#include <iostream>
+#include "print.h"
+
+double taylor_sin(double x) {
+    double suma    = 0.0;
+    double termino = x;
+
+    for (int k = 0; k < 30; k++) {
+        suma    += termino;
+        termino *= (-x * x) / ((2.0*k + 2.0) * (2.0*k + 3.0));
+    }
+    return suma;
+}
+
+double taylor_cos(double x) {
+    double suma    = 0.0;
+    double termino = 1.0;
+
+    for (int k = 0; k < 30; k++) {
+        suma    += termino;
+        termino *= (-x * x) / ((2.0*k + 1.0) * (2.0*k + 2.0));
+    }
+    return suma;
+}
+
+double taylor_exp(double x) {
+    double suma    = 0.0;
+    double termino = 1.0;
+
+    for (int k = 0; k < 30; k++) {
+        suma    += termino;
+        termino *= x / (k + 1.0);
+    }
+    return suma;
+}
+
+double taylor_ln(double x) {
+    if (x <= -1.0) {
+        PRINT("[Error] ln(1+x): x debe ser mayor que -1");
+        return 0.0;
+    }
+    if (x > 1.0) {
+        PRINT("[Advertencia] ln(1+x): convergencia lenta para |x| > 1");
+    }
