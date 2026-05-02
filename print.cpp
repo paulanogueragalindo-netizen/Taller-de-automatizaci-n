@@ -6,8 +6,7 @@ void imprimirSeparador() {
 
 void imprimirTitulo() {
     imprimirSeparador();
-    PRINT("   Aproximacion de Funciones - Taylor");
-    PRINT("   Ingenieria de Sistemas - Programacion I");
+    PRINT("Aproximacion de Funciones - Taylor");
     imprimirSeparador();
 }
 
