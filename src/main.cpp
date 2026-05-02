@@ -86,3 +86,75 @@ double taylor_tan(double x) {
     }
     return taylor_sin(x) / c;
 }
+
+int main() {
+    imprimirTitulo();
+
+    int opcion;
+    double x;
+
+    do {
+        PRINT("");
+        PRINT("1. sin(x)");
+        PRINT("2. cos(x)");
+        PRINT("3. tan(x)");
+        PRINT("4. exp(x)  [ e^x ]");
+        PRINT("5. ln(1+x) [ |x| < 1 recomendado ]");
+        PRINT("6. sinh(x)");
+        PRINT("7. cosh(x)");
+        PRINT("8. Salir");
+        PRINT("");
+        std::cout << "Opcion: ";
+        std::cin  >> opcion;
+
+        if (opcion == 0) break;
+
+        if (opcion < 1 || opcion > 7) {
+            PRINT("   Opcion invalida, intenta de nuevo.");
+            continue;
+        }
+
+        std::cout << "Ingresa x: ";
+        std::cin  >> x;
+
+        double        resultado = 0.0;
+        std::string   nombre;
+
+        switch (opcion) {
+            case 1: resultado = taylor_sin(x);  
+            nombre = "sin";    
+            break;
+
+            case 2: resultado = taylor_cos(x);  
+            nombre = "cos";    
+            break;
+
+            case 3: resultado = taylor_tan(x);  
+            nombre = "tan";    
+            break;
+
+            case 4: resultado = taylor_exp(x);  
+            nombre = "exp";    
+            break;
+
+            case 5: resultado = taylor_ln(x);   
+            nombre = "ln(1+x)"; 
+            break;
+
+            case 6: resultado = taylor_sinh(x); 
+            nombre = "sinh";   
+            break;
+
+            case 7: resultado = taylor_cosh(x); 
+            nombre = "cosh";   
+            break;
+        }
+
+        imprimirResultado(nombre, x, resultado);
+
+    } while (opcion != 0);
+
+    PRINT("");
+    PRINT("Hasta luego!");
+    return 0;
+}
